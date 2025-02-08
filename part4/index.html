@@ -127,7 +127,7 @@ hr {
 </div>
 
 
-### ETHKL ZK Workshop
+### EthVan ZK Workshop
 Wanseob Lim<br>
 PSE, EF
 
@@ -194,7 +194,7 @@ PSE, EF
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -238,10 +238,9 @@ hr {
 </div>
 
 
-#### Part 5
-
-Glimpsing into the ZK Applications &
-Crafting Circuits using Circom
+#### Part 4
+#### Programmable zk-SNARK
+R1CS, QAP, Groth16
 
 <div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
@@ -306,9 +305,1304 @@ Crafting Circuits using Circom
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
 </div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Recall
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+1. Polynomial Commitment & Interactive Oracle Proof
+2. KZG Commtitment
+3. Inner Product Argument
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+PCS & Poly-IOP
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+`$f(X) = A(X) Q(X) + R(X)$`
+
+How to prove that `$f(x_{1}) = y_{1}$` and `$f(x_{2})=y_{2}$`?
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Set
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`$A(X) = (X - x_{1})(X - x_{2})$` 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->`$R(X) = \sum_{i\in[2]} y_{i}L_{i}(X)$`
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->There should exist `$Q(X)$`
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->Also, they should satisfy `$f(r) = A(r)Q(r) + R(r)$` at a random `$r$` (public coin)
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Its soundness is `$\le \frac{d}{\mid \mathbb{F} \mid}$` (Schwartz-Zippel)
+</div>
+
+ <!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Adding more contraints
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Three polynomials
+	- `$L(X)$`: Left side polynomial
+	- `$R(X)$`: Right side polynomial
+	- `$O(X)$`: Output polynomial
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Two subsets:
+	-  `$\mathbb{H} = \{\omega^{0}, \omega^{1}, \dots, \omega^{N-1}\} \subset \mathbb{F}$`
+	-  `$\mathbb{W} = \{1, w_{1}, w_{2}, \dots, w_{n}\} \subset \mathbb{F}$`
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->`$\forall X \in \mathbb{H}$`
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->`$L(X)R(X) = O(X)$`
+	- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->`$L(X), R(X), O(X)$` is a linear combination of witnesses
+</div>
+
+ <!-- .element: style="font-size: 0.8em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Nodes
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. Witness Node 
+2. Addition Gate Node
+3. Multiplication Gate Node
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+graph LR
+	subgraph Mult Gate
+		direction BT
+		MUL1[x]
+	end
+	subgraph Add Gate
+		direction BT
+		ADD1[+]
+	end
+	subgraph Witness
+		direction BT
+		WTN1((w1))
+	end
+	classDef add stroke:#00ff00
+	classDef mul stroke:#ff0000
+	classDef wtn stroke:#0000ff
+	classDef null stroke:#00000000,fill:#00000000
+	class WTN1,WTN2,WTN3,WTN4 wtn
+	class NULL1,NULL2 null
+	class ADD1 add
+	class MUL1 mul
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Input Wire
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. We can create an input wire from a **witness** or **addition gate** node
+2. Input wire has a **scalar** value
+</div>
+
+ <!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+graph BT
+	subgraph Add Gate
+		direction BT
+		ADD1[+] -.x 3.-> NULL1[ ]
+	end
+	subgraph Witness
+		direction BT
+		WTN1((w1)) -.x 4.-> NULL2[ ]
+	end
+	classDef add stroke:#00ff00
+	classDef mul stroke:#ff0000
+	classDef wtn stroke:#0000ff
+	classDef null stroke:#00000000,fill:#00000000
+	class WTN1,WTN2,WTN3,WTN4 wtn
+	class NULL1,NULL2 null
+	class ADD1 add
+	class MUL1 mul
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Addition Gate
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. Addition Gate has **2 input wires**
+2. Always outputs an input wire
+</div>
+
+ <!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+graph BT
+	subgraph Add Gate
+		direction BT
+		ADD1[+] -.x 1.-> NULL1[ ]
+		NULL2[ ] -.x 2.-> ADD1[+]
+		NULL3[ ] -.x 1.-> ADD1[+]
+	end
+	classDef add stroke:#00ff00
+	classDef mul stroke:#ff0000
+	classDef wtn stroke:#0000ff
+	classDef null stroke:#00000000,fill:#00000000
+	class WTN1,WTN2,WTN3,WTN4 wtn
+	class NULL1,NULL2,NULL3 null
+	class ADD1 add
+	class MUL1 mul
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Linear Combination With Addition Gate
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+We can express a **linear combination** of witness values using witness & addition gates nodes and input wires
+
+Therefore, an input wire can be considered as feeding a linear combination of witness values to another gate.
+</div>
+
+ <!-- .element: style="font-size: 0.68em" -->
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+flowchart
+	subgraph Linear Combination of Witness
+		direction BT
+	    WTN1((w1))-. x 3 .-> ADD2[+]
+	    ADD1[+] -.x 4.-> ADD2[+]
+	    ADD2[+] -.x 5.-> NULL1[ ]
+	    WTN2((w2))-. x 2 .-> ADD1[+]
+	    WTN3((w3))-. x 1 .-> ADD1[+]
+	end
+	
+	classDef add stroke:#00ff00
+	classDef wtn stroke:#0000ff
+	classDef null stroke:#00000000,fill:#00000000
+	class WTN1,WTN2,WTN3 wtn
+	class NULL1 null
+	class ADD1,ADD2 add
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Multiplication Gate
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. Multiplication Gate has **2 input wires**
+2. Outputs an witness node
+2. Creates a **constraint**(solid line) with its output such that `$L \cdot R = O$`
+
+</div>
+
+ <!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+graph BT
+	subgraph Mult Gate
+		direction BT
+		MUL1[x] === WTN1((O))
+		NULL2[L] -.-> MUL1[x]
+		NULL3[R] -.-> MUL1[x]
+	end
+	classDef add stroke:#00ff00
+	classDef mul stroke:#ff0000
+	classDef wtn stroke:#0000ff
+	classDef null stroke:#00000000,fill:#00000000
+	class WTN1,WTN2,WTN3,WTN4 wtn
+	class NULL1,NULL2,NULL3 null
+	class ADD1 add
+	class MUL1 mul
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+R1CS
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+A mult gate creates a constraints between two linear combinations of witness values, where each linear combination's at most degree is 1
+</div>
+
+ <!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+flowchart
+	subgraph Multiplication Gate
+		direction BT
+		subgraph "Left LC"
+		    WTN2((w2))-. x 2 .-> ADD1[+]
+		    WTN3((w3))-. x 1 .-> ADD1[+]
+		end
+		subgraph "Right LC"
+			WTN1((w1))
+		end
+		ADD1[+] -.x 4.-> MUL1[x]
+		WTN1((w1))-. x 3 .-> MUL1[x]
+	    MUL1[x] === WTN4((w4))
+	end
+	
+	classDef add stroke:#00ff00
+	classDef mul stroke:#ff0000
+	classDef wtn stroke:#0000ff
+	class WTN1,WTN2,WTN3,WTN4 wtn
+	class ADD1 add
+	class MUL1 mul
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 <style>
@@ -354,6 +1648,546 @@ QAP w/ R1CS
 
 <!-- .element: class="title" -->
 </div>
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. We have `$N=3$` **multiplicative gates**<br>
+2. Set a **subset `$\mathbb{H}_{M}$`** to express a circuit with `$N$` multiplicative gates `$\mathbb{H}_{M} = \{h_{1}, h_{2}, \dots, h_{N}\} \subset \mathbb{F}_{p}$`<br>
+		<span>(Mostly, we use powers of `$N$`-th root of unity for `$\mathbb{H}_{M}$`)</span><!-- .element: style="font-size: 0.7em" --><br>
+1. Create **algebraic constraints** <br>
+		`$\forall X \in \mathbb{H}_{M}$`<br>
+		`$L_{\mathbf{w}}(X) \cdot R_{\mathbf{w}}(X) = O_{\mathbf{w}}(X)$`<br>
+4. **Centrifugate the witness `$\mathbf{w}$` from** the polynomial `$L_{\mathbf{w}}(X), R_{\mathbf{w}}(X), O_{\mathbf{w}}(X)$` 
+		
+</div>
+
+ <!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+graph BT
+	WTN0((w1 = 1))
+	WTN1((w4))
+	WTN2((w6))
+	WTN3((w3))
+	WTN4((w8))
+	WTN5((w2))
+	WTN6((w5))
+	WTN7((w9))
+	WTN8((w7))
+	ADD1[+]
+	ADD2[+]
+	ADD3[+]
+	MUL1["x (M1)"]
+	MUL2["x (M2)"]
+	MUL3["x (M3)"]
+	subgraph Multiplication Gate
+		direction BT
+		
+		WTN2 -.x 3.-> MUL1
+		ADD1 -.x 4.-> MUL1
+	    MUL1 === WTN4
+		
+		WTN3 -.x 3.-> ADD1
+		WTN1 -.x 2.-> ADD1
+		
+	    ADD3 -.x 1.-> MUL2
+	    WTN4 -.x 2.-> MUL2
+	    MUL2 === WTN7
+		
+		WTN5 -.x 1.-> ADD2
+		WTN0 -.x 5.-> ADD2
+		
+		WTN0 -.x 2.-> ADD3
+		WTN8 -.x 1.-> ADD3
+		
+		ADD2 -.x 8.-> MUL3
+		WTN6-. x 7 .-> MUL3
+	    MUL3 === WTN8
+	end
+	
+	classDef add stroke:#00ff00
+	classDef mul stroke:#ff0000
+	classDef wtn stroke:#0000ff
+	class WTN0,WTN1,WTN2,WTN3,WTN4,WTN5,WTN6,WTN7,WTN8,WTN9 wtn
+	class ADD1,ADD2,ADD3,ADD4 add
+	class MUL1,MUL2,MUL3 mul
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+QAP w/ R1CS
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<br>
+<br>
+
+Witness Vector: `$\mathbf{w} = [w_{1}, w_{2}, w_{3}, \dots, w_{9}]^{T}$` (* `$w_{1} = 1$`)
+
+***
+
+`$\begin{align}L_{\mathbf{w}}(h_{1}) &  = 0 \cdot w_{1} + \cdots + 3 \cdot w_{6} + \cdots + 0 \cdot w_{9} & \\&  = \underbrace{[0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 3 ~ 0 ~ 0 ~ 0]}_{\mathbf{L}_{h_{1}}^{T}} \cdot \mathbf{w} \\ & = \langle \mathbf{L}_{h_{1}}, \mathbf{w} \rangle\end{align}$`
+
+***
+
+`$\begin{align}L_{\mathbf{w}}(h_{2}) &  = 0 \cdot w_{1} + \cdots + 2 \cdot w_{8} + 0 \cdot w_{9} & \\&  = \underbrace{[0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 2 ~ 0]}_{\mathbf{L}_{h_{2}}^{T}} \cdot \mathbf{w} \\ & = \langle \mathbf{L}_{h_{2}}, \mathbf{w} \rangle\end{align}$`
+
+***
+`$\begin{align}L_{\mathbf{w}}(h_{3}) &  = 40 \cdot w_{1} + 8 \cdot w_{2} + \cdots + 0 \cdot w_{9} & \\&  = \underbrace{[40 ~ 8 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0]}_{\mathbf{L}_{h_{3}}^{T}} \cdot \mathbf{w} \\ & = \langle \mathbf{L}_{h_{3}}, \mathbf{w} \rangle\end{align}$`
+
+
+</div>
+
+ <!-- .element: style="font-size: 0.5em" -->
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<div class="mermaid">
+graph BT
+	WTN0((w1 = 1))
+	WTN1((w4))
+	WTN2((w6))
+	WTN3((w3))
+	WTN4((w8))
+	WTN5((w2))
+	WTN6((w5))
+	WTN7((w9))
+	WTN8((w7))
+	ADD1[+]
+	ADD2[+]
+	ADD3[+]
+	MUL1["x (M1)"]
+	MUL2["x (M2)"]
+	MUL3["x (M3)"]
+	subgraph Multiplication Gate
+		direction BT
+		
+		WTN2 -.x 3.-> MUL1
+		ADD1 -.x 4.-> MUL1
+	    MUL1 === WTN4
+		
+		WTN3 -.x 3.-> ADD1
+		WTN1 -.x 2.-> ADD1
+		
+	    ADD3 -.x 1.-> MUL2
+	    WTN4 -.x 2.-> MUL2
+	    MUL2 === WTN7
+		
+		WTN5 -.x 1.-> ADD2
+		WTN0 -.x 5.-> ADD2
+		
+		WTN0 -.x 2.-> ADD3
+		WTN8 -.x 1.-> ADD3
+		
+		ADD2 -.x 8.-> MUL3
+		WTN6-. x 7 .-> MUL3
+	    MUL3 === WTN8
+	end
+	
+	classDef add stroke:#00ff00
+	classDef mul stroke:#ff0000
+	classDef wtn stroke:#0000ff
+	class WTN0,WTN1,WTN2,WTN3,WTN4,WTN5,WTN6,WTN7,WTN8,WTN9 wtn
+	class ADD1,ADD2,ADD3,ADD4 add
+	class MUL1,MUL2,MUL3 mul
+
+</div>
+
+</div>
+
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+QAP w/ R1CS
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<br>
+<br>
+
+Witness Vector: `$\mathbf{w} = [w_{1}, w_{2}, w_{3}, \dots, w_{9}]^{T}$` (* `$w_{1} = 1$`)
+
+***
+
+`$\begin{align}L_{\mathbf{w}}(h_{1}) &  = 0 \cdot w_{1} + \cdots + 3 \cdot w_{6} + \cdots + 0 \cdot w_{9} & \\&  = \underbrace{[0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 3 ~ 0 ~ 0 ~ 0]}_{\mathbf{L}_{h_{1}}^{T}} \cdot \mathbf{w} \\ & = \langle \mathbf{L}_{h_{1}}, \mathbf{w} \rangle\end{align}$`
+
+***
+
+`$\begin{align}L_{\mathbf{w}}(h_{2}) &  = 0 \cdot w_{1} + \cdots + 2 \cdot w_{8} + 0 \cdot w_{9} & \\&  = \underbrace{[0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 2 ~ 0]}_{\mathbf{L}_{h_{2}}^{T}} \cdot \mathbf{w} \\ & = \langle \mathbf{L}_{h_{2}}, \mathbf{w} \rangle\end{align}$`
+
+***
+`$\begin{align}L_{\mathbf{w}}(h_{3}) &  = 40 \cdot w_{1} + 8 \cdot w_{2} + \cdots + 0 \cdot w_{9} & \\&  = \underbrace{[40 ~ 8 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0 ~ 0]}_{\mathbf{L}_{h_{3}}^{T}} \cdot \mathbf{w} \\ & = \langle \mathbf{L}_{h_{3}}, \mathbf{w} \rangle\end{align}$`
+
+</div>
+
+ <!-- .element: style="font-size: 0.4em" -->
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Finally, generalize the left polynomial for an `$N$` mult gates as<br>
+
+`$L_{\mathbf{w}}(X) = \underset{x\in \mathbb{H}_{M}}{\sum} \langle \mathbf{L}_{x}, \mathbf{w} \rangle \cdot l_{x}(X) = \langle (\underset{x\in \mathbb{H}_{M}}{\sum}\mathbf{L}_{x} \cdot l_{x}(X)), \mathbf{w} \rangle = \langle \mathbf{L}(X), \mathbf{w} \rangle$` 
+
+where `$l_{x}(X)$` is its Lagrange basis polynomial such that `$l_{x}(X)=\underset{\begin{align} \forall & x' \in \mathbb{H}_{M} \\ & x' \neq x\end{align}}{\prod} \frac{X-x'}{x-x'} =   \begin{cases} 1  & \text{if } X = x \\ 0  & \text{if } X \in \mathbb{H}_{M} \text{ and } X \neq x \end{cases}$`
+
+And `$\mathbf{L}(X)$` can be expressed as a vector polynomial size of `$N$` which is a circuit data independent to the witness `$\mathbf{w}$`.
+
+`$L_{\mathbf{w}}(X) = \underbrace{\begin{bmatrix} L_{1}(X) \\ L_{2}(X) \\ \vdots \\ L_{N}(X) \end{bmatrix}}_{\mathbf{L}(X)} \cdot \underbrace{\begin{bmatrix} w_{1}\\ w_{2} \\ \vdots \\ w_{N} \end{bmatrix}}_{\mathbf{w}} = \langle \mathbf{L}(X), \mathbf{w} \rangle$`
+
+</div>
+
+ <!-- .element: style="font-size: 0.4em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+QAP w/ R1CS
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
 
 
 
@@ -502,7 +2336,1085 @@ graph BT
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>The problem is that computing the quotient polynomial takes long time</li>
+<li>Use Hadamard Product Approach</li>
+<li>Or Sumcheck Approach</li>
+<li>If we use <code>$N$</code>-th root of unity, <code>$A(X) = X^{N} -1$</code></li>
+</ul>
+</aside></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Groth16
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+R1CS:
+
+`$L_{\mathbf{w}}(X) = \langle \mathbf{L}(X), \mathbf{w} \rangle$`
+`$R_{\mathbf{w}}(X) = \langle \mathbf{R}(X), \mathbf{w} \rangle$`
+`$O_{\mathbf{w}}(X) = \langle \mathbf{O}(X), \mathbf{w} \rangle$`
+`$\begin{align} & p_{\mathbf{w}}(X) = L_{\mathbf{w}}(X)\cdot R_{\mathbf{w}}(X) - O_{\mathbf{w}}(X)\end{align}$`
+
+***
+QAP:
+
+`$\begin{align} \forall X \in \mathbb{H} \quad & p_{\mathbf{w}}(X) = 0 \\ \iff \exists & Q_{\mathbf{w}}(X) \\ s.t. \quad  & p_{\mathbf{w}}(X) = A(X)Q_{\mathbf{w}}(X) \\ & A(X)=\underset{x \in \mathbb{H}_{M}}{\prod}(X-x)\end{align}$`
+</div>
+
+ <!-- .element: style="font-size: 0.6em" -->
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+- `$\mathbf{L}(X), \mathbf{R}(X), \mathbf{O}(X)$` are public
+- `$\mathbf{w}$` is private
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->What if the prover shares `$L_{\mathbf{w}}(r), R_{\mathbf{w}}(r), O_{\mathbf{w}}(r)$`?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->I can infer some values
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->What if we use `$\tau$` which is computed by the trusted setup?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->I still can try some brute force attack to test it
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->What should we do?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Random Linear Combination
+</div>
+
+ <!-- .element: style="font-size: 0.6em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Groth16
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+R1CS:
+
+`$L_{\mathbf{w}}(X) = \langle \mathbf{L}(X), \mathbf{w} \rangle$`
+`$R_{\mathbf{w}}(X) = \langle \mathbf{R}(X), \mathbf{w} \rangle$`
+`$O_{\mathbf{w}}(X) = \langle \mathbf{O}(X), \mathbf{w} \rangle$`
+`$\begin{align} & p_{\mathbf{w}}(X) = L_{\mathbf{w}}(X)\cdot R_{\mathbf{w}}(X) - O_{\mathbf{w}}(X)\end{align}$`
+
+***
+QAP:
+
+`$\begin{align} \forall X \in \mathbb{H} \quad & p_{\mathbf{w}}(X) = 0 \\ \iff \exists & Q_{\mathbf{w}}(X) \\ s.t. \quad  & p_{\mathbf{w}}(X) = A(X)Q_{\mathbf{w}}(X) \\ & A(X)=\underset{x \in \mathbb{H}_{M}}{\prod}(X-x)\end{align}$`
+</div>
+
+ <!-- .element: style="font-size: 0.6em" -->
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+`$p_{\mathbf{w}}(r) = L_{\mathbf{w}}(r)R_{\mathbf{w}}(r) - O_{\mathbf{w}}(r)$`
+
+`$p_{1} = \alpha + L_{\mathbf{w}}(r)$`<!-- .element: class="fragment" data-fragment-index="2" --><br>
+`$p_{2} = \beta + R_{\mathbf{w}}(r)$`<!-- .element: class="fragment" data-fragment-index="3" --><br>
+`$p_{3} = \alpha R_{\mathbf{w}}(r) + \beta L_{\mathbf{w}}(r) + O_{\mathbf{w}}(r) + A(r)Q_{\mathbf{w}}(r)$`<!-- .element: class="fragment" data-fragment-index="4" --><br>
+`$p_{1}\cdot p_{2} - p_{3}= \alpha \cdot \beta$`<!-- .element: class="fragment" data-fragment-index="5" --><br>
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->What if `$\mathcal{P}$` shares `$g^{p_{1}}, g^{p_{2}}, g^{p_{3}}$` instead? 
+- &shy;<!-- .element: class="fragment" data-fragment-index="7" -->`$\mathcal{P}$` can hide `$L_{\mathbf{w}}(r), R_{\mathbf{w}}(r), O_{\mathbf{w}}(r)$` which can leak `$\mathbf{W}$`
+- &shy;<!-- .element: class="fragment" data-fragment-index="8" -->`$\begin{align}& p_{1}\cdot p_{2} - p_{3}= \alpha \cdot \beta \\ & \iff e(g^{p_{1}}, g^{p_{2}}) = e(g^{p_{3}}, g)e(g^{\alpha}, g^{\beta})\end{align}$`
+- &shy;<!-- .element: class="fragment" data-fragment-index="9" -->Let's use Fiat-Shamir to make it all non-interactive
+</div>
+
+ <!-- .element: style="font-size: 0.6em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Groth16 + Fiat-Shamir
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+`$p_{\mathbf{w}}(\tau) = L_{\mathbf{w}}(\tau)\cdot R_{\mathbf{w}}(\tau) - O_{\mathbf{w}}(\tau)$`<br>
+`$p_{1} = \alpha + L_{\mathbf{w}}(\tau)$`  **`$\pi_{1} = g^{\alpha + L_{\mathbf{w}}(\tau)}$`**<br>
+`$p_{2} = \beta + R_{\mathbf{w}}(\tau)$` **`$\pi_{2} = g^{\beta + R_{\mathbf{w}}(\tau)}$`**<br>
+`$p_{3} = \alpha R_{\mathbf{w}}(\tau) + \beta L_{\mathbf{w}}(\tau) + O_{\mathbf{w}}(\tau) + A(\tau)Q_{\mathbf{w}}(\tau)$`**`$\pi_{3} = g^{\alpha R(\tau) + \beta L(\tau) + O(\tau) + A(\tau)Q(\tau)}$`**<br>
+`$p_{1}\cdot p_{2} - p_{3}= \alpha \cdot \beta$`    **`$e(\pi_{1}, \pi_{2}) \stackrel{?}{=} e(\pi_{3}, g) \cdot e(g^{\alpha}, g^{\beta})$`**
+
+- `$g^{L_{\mathbf{w}}(\tau)} = g^{\langle \mathbf{L}(\tau), \mathbf{w} \rangle}$`
+- `$g^{R_{\mathbf{w}}(\tau)} = g^{\langle \mathbf{R}(\tau), \mathbf{w} \rangle}$`
+- `$g^{O_{\mathbf{w}}(\tau)} = g^{\langle \mathbf{O}(\tau), \mathbf{w} \rangle}$`
+- `$g^{A(\tau)} = g^{\prod_{\forall x \in \mathbb{H}_{M}}(\tau - x)}$`
+- `$g^{Q(\tau)} = g^{\sum_{x\in \mathbb{H}_{Q}} q_{x}l_{qx}(\tau)}$`
+- `$g^{\beta L_{\mathbf{w}}(\tau)} = g^{\langle \beta\mathbf{L}(\tau), \mathbf{w} \rangle}$` 
+- `$g^{\alpha R_{\mathbf{w}}(\tau)} = g^{\langle \alpha\mathbf{R}(\tau), \mathbf{w} \rangle}$` 
+</div>
+
+ <!-- .element: style="font-size: 0.5em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Groth16 + Fiat-Shamir
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<br>
+<br>
+
+<u>Circuit Information</u>:
+
+- **`$\mathbf{L}(\tau)$`**
+- **`$\mathbf{R}(\tau)$`**
+- **`$\mathbf{O}(\tau)$`**
+- **`$\beta \mathbf{L}(\tau)$`**
+- **`$\alpha \mathbf{R}(\tau)$`**
+
+<u>Private Input(Witness)</u>:
+
+`$\mathbf{w} = \begin{bmatrix} w_{1} = 1\\ w_{2} \\ \vdots \\ w_{n} \end{bmatrix}$`
+
+<u>Verification Keys</u>:
+- `$g^{\alpha}, g^{\beta}$`
+</div>
+
+ <!-- .element: style="font-size: 0.45em" -->
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<br>
+<br>
+<br>
+
+<u>Fiat-Shamir Transformed L,R,O polynomials</u>:
+- `$L_{\mathbf{w}}(\tau) = \langle $`**`$\mathbf{L}(\tau)$`**`$, \mathbf{w} \rangle$`
+- `$R_{\mathbf{w}}(\tau) = \langle $`**`$\mathbf{R}(\tau)$`**`$, \mathbf{w} \rangle$`
+- `$O_{\mathbf{w}}(\tau) = \langle $`**`$\mathbf{O}(\tau)$`**`$, \mathbf{w} \rangle$`
+***
+<u>Values for Linear Combination w/ `$\alpha, \beta$`</u>:
+- `$\beta L_{\mathbf{w}}(\tau) = \langle $`**`$\beta\mathbf{L}(\tau)$`**`$, \mathbf{w} \rangle$`
+- `$\alpha R_{\mathbf{w}}(\tau) = \langle $`**`$\alpha\mathbf{R}(\tau)$`**`$, \mathbf{w} \rangle$`
+***
+<u>Vanishing Polynomial & Quotient Polynomial</u> to prove `$A(X)Q_{\mathbf{w}}(X)=L_{\mathbf{w}}(X) \cdot R_{\mathbf{w}}(X)-O_{\mathbf{w}}(X)=0 \quad \forall x \in \mathbb{H}$`:
+- `$A(\tau) = \prod_{\forall x \in \mathbb{H}}(\tau - x)$`
+- `$Q_{\mathbf{w}}(\tau) = \underset{x\in \mathbb{H}_{M}}{\sum} q_{x}l_{qx}(\tau)$`
+
+***
+<u>Verification</u>: `$e(\underbrace{g^{\alpha + L_{\mathbf{w}}(\tau)}}_{\pi_{1}}, \underbrace{g^{\beta + R_{\mathbf{w}}(\tau)}}_{\pi_{2}}) \stackrel{?}{=} e(\underbrace{g^{\beta L_{\mathbf{w}}(\tau) \alpha R_{\mathbf{w}}(\tau) + O_{\mathbf{w}}(\tau) + A(\tau)Q_{\mathbf{w}}(\tau)}}_{\pi_{3}}, g) \cdot e(\underbrace{g^{\alpha}, g^{\beta}}_{vks})$`
+</div>
+
+ <!-- .element: style="font-size: 0.45em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Groth16 & Public / Private Inputs
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<br>
+<br>
+
+<u>Circuit Information</u>:
+
+- `$\mathbf{L}(\tau) = \mathbf{L}_{p}(\tau) || \mathbf{L}_{s}(\tau)$`
+- `$\mathbf{R}(\tau) = \mathbf{R}_{p}(\tau) || \mathbf{R}_{s}(\tau)$`
+- `$\mathbf{O}(\tau) = \mathbf{O}_{p}(\tau) || \mathbf{O}_{s}(\tau)$`
+- `$\beta \mathbf{L}_{p}(\tau)$`,  `$\beta \mathbf{L}_{s}(\tau)$`
+- `$\alpha \mathbf{R}_{p}(\tau)$`, `$\alpha \mathbf{R}_{s}(\tau)$`
+
+<u>Private Input(Witness)</u>:
+
+`$\mathbf{w} = \underbrace{\begin{bmatrix} w_{1} = 1\\ w_{2} \\ \vdots \end{bmatrix}}_{\mathbf{w}_{p} \text{: public}} | | \underbrace{\begin{bmatrix} \vdots \\ w_{n-1} \\ w_{n}\end{bmatrix}}_{\mathbf{w}_{s} \text{: secret}}$`
+
+<u>Verification Keys</u>:
+- `$g^{\alpha}, g^{\beta}$`
+</div>
+
+ <!-- .element: style="font-size: 0.45em" -->
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<br>
+<br>
+<br>
+
+<u>Fiat-Shamir Transformed L,R,O polynomials & their linear combinations</u>:
+
+- `$L_{\mathbf{w}}(\tau) = \langle \mathbf{L}(\tau), \mathbf{w} \rangle = \langle \mathbf{L}_{p}(\tau), \mathbf{w}_{p} \rangle + \langle \mathbf{L}_{s}(\tau), \mathbf{w}_{s} \rangle = L_{\mathbf{w}_{p}}(\tau) + L_{\mathbf{w}_{s}}(\tau)$`
+- `$R_{\mathbf{w}}(\tau) = \langle \mathbf{R}(\tau), \mathbf{w} \rangle = \langle \mathbf{R}_{p}(\tau), \mathbf{w}_{p} \rangle + \langle \mathbf{R}_{s}(\tau), \mathbf{w}_{s} \rangle =  R_{\mathbf{w}_{p}}(\tau) + R_{\mathbf{w}_{s}}(\tau)$`
+- `$O_{\mathbf{w}}(\tau) = \langle \mathbf{O}(\tau), \mathbf{w} \rangle = \langle \mathbf{O}_{p}(\tau), \mathbf{w}_{p} \rangle + \langle \mathbf{O}_{s}(\tau), \mathbf{w}_{s} \rangle =  O_{\mathbf{w}_{p}}(\tau) + O_{\mathbf{w}_{s}}(\tau)$`
+- `$\beta L_{\mathbf{w}}(\tau) = \langle \beta\mathbf{L}_{p}(\tau), \mathbf{w}_{p} \rangle + \langle \beta\mathbf{L}_{s}(\tau), \mathbf{w}_{s} \rangle$`
+- `$\alpha R_{\mathbf{w}}(\tau) = \langle \alpha\mathbf{R}_{p}(\tau), \mathbf{w}_{p} \rangle + \langle \alpha\mathbf{R}_{s}(\tau), \mathbf{w}_{s} \rangle$`
+***
+<u>Vanishing Polynomial & Quotient Polynomial</u> to prove `$A(X)Q_{\mathbf{w}}(X)=L_{\mathbf{w}}(X) \cdot R_{\mathbf{w}}(X)-O_{\mathbf{w}}(X)=0 \quad \forall x \in \mathbb{H}$`:
+- `$A(\tau) = \prod_{\forall x \in \mathbb{H}}(\tau - x)$`
+- `$Q_{\mathbf{w}}(\tau) = \underset{x\in \mathbb{H}_{M}}{\sum} q_{x}l_{qx}(\tau)$`
+
+***
+<u>Proving</u>: 
+- `$p_{1} = \alpha + L_{\mathbf{w}}(\tau) +  r \delta$`
+- `$p_{2} = \beta + R_{\mathbf{w}}(\tau) +  s \delta$`
+- `$p_{3} = s p_{1} + r p_{2} - rs \delta + \frac{~\beta L_{\mathbf{w}_{s}}(\tau) \alpha R_{\mathbf{w}_{s}}(\tau) + O_{\mathbf{w}_{s}}(\tau) + A(\tau)Q_{\mathbf{w}}(\tau)}{\delta}$`
+***
+<u>Verification</u>: 
+`$e(\underbrace{g_{1}^{p_{1}}}_{\pi_{1}}, \underbrace{g_{2}^{p_{2}}}_{\pi_{2}}) \stackrel{?}{=} e(\underbrace{g_{1}^{\gamma^{-1}(~\beta L_{\mathbf{w}_{p}}(\tau) \alpha R_{\mathbf{w}_{p}}(\tau) + O_{\mathbf{w}_{p}}(\tau) ~)}}_{\text{verifier computes}}, g_{2}^{\gamma}) \cdot e(\underbrace{g_{1}^{p_{3}}}_{\pi_{3}}, g_{2}^{\delta}) \cdot e(\underbrace{g_{1}^{\alpha}, g_{2}^{\beta}}_{vks})$`
+</div>
+
+ <!-- .element: style="font-size: 0.45em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div>
+
+<aside class="notes"><p>using <code>$\gamma, \delta$</code> is Blinded Knowledge of Coefficient Assumption
+using <code>$r, s$</code> works as a nonce to achieve the perfect zero-knowledge</p>
+</aside></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Computing Quotient Polynomial
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+R1CS:
+
+`$L_{\mathbf{w}}(X) = \langle \mathbf{L}(X), \mathbf{w} \rangle$`
+`$R_{\mathbf{w}}(X) = \langle \mathbf{R}(X), \mathbf{w} \rangle$`
+`$O_{\mathbf{w}}(X) = \langle \mathbf{O}(X), \mathbf{w} \rangle$`
+`$\begin{align} & p_{\mathbf{w}}(X) = L_{\mathbf{w}}(X)\cdot R_{\mathbf{w}}(X) - O_{\mathbf{w}}(X)\end{align}$`
+
+***
+QAP:
+
+`$\begin{align} \forall X \in \mathbb{H} \quad & p_{\mathbf{w}}(X) = 0 \\ \iff \exists & Q_{\mathbf{w}}(X) \\ s.t. \quad  & p_{\mathbf{w}}(X) = A(X)Q_{\mathbf{w}}(X) \\ & A(X)=\underset{x \in \mathbb{H}_{M}}{\prod}(X-x)\end{align}$`
+</div>
+
+ <!-- .element: style="font-size: 0.6em" -->
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+1. Degree of `$L_{\mathbf{w}}(X)$`: `$N-1$`<!-- .element: class="fragment" -->
+1. Degree of `$R_{\mathbf{w}}(X)$`: `$N-1$`<!-- .element: class="fragment" -->
+1. Degree of `$O_{\mathbf{w}}(X)$`: `$N -1$`<!-- .element: class="fragment" -->
+1. Degree of `$p_{\mathbf{w}}(X)$`: `$2N - 2$`<!-- .element: class="fragment" -->
+1. Degree of `$A(X)$`: `$N$`<!-- .element: class="fragment" -->
+1. Degree of `$Q_{\mathbf{w}}(X)$`: `$N - 2$`<!-- .element: class="fragment" -->
+</div>
+
+ <!-- .element: style="font-size: 0.7em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+</div>
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+h1,h2,h3,h4,h5,h6 { 
+    text-transform: none !important; 
+} 
+strong { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    background-color: #836953; 
+} 
+hr { 
+    width: 100%; 
+    border: 1px solid white; 
+} 
+.left {
+	text-align: left;
+}
+.small {
+	font-size: 0.7em;
+}
+.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    background-color: #836953; 
+    padding: 0.2em;
+}
+.footer {
+    width: 100%; 
+    font-size: 0.4em;
+}
+</style>
+
+<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<div class="block">
+
+Computing Quotient Polynomial
+</div>
+
+
+<!-- .element: class="title" -->
+</div>
+
+
+
+
+
+
+
+
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+R1CS:
+
+`$L_{\mathbf{w}}(X) = \langle \mathbf{L}(X), \mathbf{w} \rangle$`
+`$R_{\mathbf{w}}(X) = \langle \mathbf{R}(X), \mathbf{w} \rangle$`
+`$O_{\mathbf{w}}(X) = \langle \mathbf{O}(X), \mathbf{w} \rangle$`
+`$\begin{align} & p_{\mathbf{w}}(X) = L_{\mathbf{w}}(X)\cdot R_{\mathbf{w}}(X) - O_{\mathbf{w}}(X)\end{align}$`
+
+***
+QAP:
+
+`$\begin{align} \forall X \in \mathbb{H} \quad & p_{\mathbf{w}}(X) = 0 \\ \iff \exists & Q_{\mathbf{w}}(X) \\ s.t. \quad  & p_{\mathbf{w}}(X) = A(X)Q_{\mathbf{w}}(X) \\ & A(X)=\underset{x \in \mathbb{H}_{M}}{\prod}(X-x)\end{align}$`
+</div>
+
+ <!-- .element: style="font-size: 0.6em" -->
+
+</div>
+<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Subgroup `$\mathbb{H}_{Q}$`
+- `$|\mathbb{H}_{Q}| = N - 1$`
+- `$\mathbb{H}_{Q} \cap \mathbb{H}_{M} = \phi$`
+- `$\mathbb{H}_{Q} = \{h_{1}, h_{2}, \dots, h_{N-1} \} \subset \mathbb{F}$`
+
+Then compute `$N -1$` points,
+- `$q_{i} = \frac{L(h_{i})R(h_{i}) - O(h_{i})}{A(h_{i})}$`
+
+`$Q(X)$` is a polynomial degree of `$N-2$` which interpolates the given `$N-1$` points: `$\{(h_{1}, q_{1}), (h_{2}, q_{2}), \dots, (h_{N-1}, q_{N-1})\}$`
+</div>
+
+ <!-- .element: style="font-size: 0.6em" -->
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+<!-- .element: class="footer" -->
+</div>
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -546,7 +3458,13 @@ hr {
 </div>
 
 
-https://zkrepl.dev
+Lagrange Interpolation of a high degree polynomial is expensive
+(Needs FFT `$O(d \log d)$`)
+
+Transforming a high-degree univariate polynomial into a low-degree multi-variate polynomial
+<!-- .element: class="fragment" -->
+(We're going to handle this later w/ SumCheck protocol)
+<!-- .element: style="font-size: 0.8em" class="fragment" -->
 
 <div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
@@ -611,7 +3529,7 @@ https://zkrepl.dev
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -651,69 +3569,16 @@ hr {
 
 <div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-<div class="block">
-
-from R1CS to Source Code
-</div>
-
-
 <!-- .element: class="title" -->
 </div>
 
 
+Circuit-specific Trusted Setup is cumbersome
 
+**Polynomial IOPs** using PCSs allows us to communicate with oracles of the circuit polynomials<!-- .element: class="fragment" -->
 
-<div class="mermaid">
-graph BT
-	WTN0((w1 = 1))
-	WTN1((w4))
-	WTN2((w6))
-	WTN3((w3))
-	WTN4((w8))
-	WTN5((w2))
-	WTN6((w5))
-	WTN7((w9))
-	WTN8((w7))
-	ADD1[+]
-	ADD2[+]
-	ADD3[+]
-	MUL1["x (M1)"]
-	MUL2["x (M2)"]
-	MUL3["x (M3)"]
-	subgraph Multiplication Gate
-		direction BT
-		
-		WTN2 -.x 3.-> MUL1
-		ADD1 -.x 4.-> MUL1
-	    MUL1 === WTN4
-		
-		WTN3 -.x 3.-> ADD1
-		WTN1 -.x 2.-> ADD1
-		
-	    ADD3 -.x 1.-> MUL2
-	    WTN4 -.x 2.-> MUL2
-	    MUL2 === WTN7
-		
-		WTN5 -.x 1.-> ADD2
-		WTN0 -.x 5.-> ADD2
-		
-		WTN0 -.x 2.-> ADD3
-		WTN8 -.x 1.-> ADD3
-		
-		ADD2 -.x 8.-> MUL3
-		WTN6-. x 7 .-> MUL3
-	    MUL3 === WTN8
-	end
-	
-	classDef add stroke:#00ff00
-	classDef mul stroke:#ff0000
-	classDef wtn stroke:#0000ff
-	class WTN0,WTN1,WTN2,WTN3,WTN4,WTN5,WTN6,WTN7,WTN8,WTN9 wtn
-	class ADD1,ADD2,ADD3,ADD4 add
-	class MUL1,MUL2,MUL3 mul
-
-</div>
-
+(We're going to handle this later w/ Plonk or Bulletproofs protocol)
+<!-- .element: style="font-size: 0.8em" class="fragment" -->
 
 <div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
@@ -778,701 +3643,7 @@ graph BT
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-from R1CS to Source Code
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-```
-pragma circom 2.1.6;
-
-
-template Example () {
-
-	// signal input w1;  // don't need to declare the constant 1
-	signal input w2; //input witness
-	signal input w3;
-	signal input w4;
-	signal input w5;
-	signal input w6;
-	
-	signal w7; // intermediate witness
-	signal w8; // intermediate witness
-	
-	signal output w9; // output is public
-	
-	// mult gate 1
-	w8 <== (3*w6) * 4*(3*w3 + 2*w4);
-	// mult gate 3
-	w7 <== 8*(w2 + 5) * (7*w5);
-	// mult gate 2
-	w9 <== (2*w8) * 1*(w7+2);
-}
-
-component main { public [ w2 ] } = Example();
-```
-<!-- .element: style="font-size: 0.3em; width: 25vw" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-<div class="mermaid">
-graph BT
-	WTN0((w1 = 1))
-	WTN1((w4))
-	WTN2((w6))
-	WTN3((w3))
-	WTN4((w8))
-	WTN5((w2))
-	WTN6((w5))
-	WTN7((w9))
-	WTN8((w7))
-	ADD1[+]
-	ADD2[+]
-	ADD3[+]
-	MUL1["x (M1)"]
-	MUL2["x (M2)"]
-	MUL3["x (M3)"]
-	subgraph Multiplication Gate
-		direction BT
-		
-		WTN2 -.x 3.-> MUL1
-		ADD1 -.x 4.-> MUL1
-	    MUL1 === WTN4
-		
-		WTN3 -.x 3.-> ADD1
-		WTN1 -.x 2.-> ADD1
-		
-	    ADD3 -.x 1.-> MUL2
-	    WTN4 -.x 2.-> MUL2
-	    MUL2 === WTN7
-		
-		WTN5 -.x 1.-> ADD2
-		WTN0 -.x 5.-> ADD2
-		
-		WTN0 -.x 2.-> ADD3
-		WTN8 -.x 1.-> ADD3
-		
-		ADD2 -.x 8.-> MUL3
-		WTN6-. x 7 .-> MUL3
-	    MUL3 === WTN8
-	end
-	
-	classDef add stroke:#00ff00
-	classDef mul stroke:#ff0000
-	classDef wtn stroke:#0000ff
-	class WTN0,WTN1,WTN2,WTN3,WTN4,WTN5,WTN6,WTN7,WTN8,WTN9 wtn
-	class ADD1,ADD2,ADD3,ADD4 add
-	class MUL1,MUL2,MUL3 mul
-
-</div>
-
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Input wire & Constraints
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-```
-pragma circom 2.1.6;
-
-
-template Example () {
-
-	// signal input w1;  // don't need to declare the constant 1
-	signal input w2; //input witness
-	signal input w3;
-	signal input w4;
-	signal input w5;
-	signal input w6;
-	
-	signal w7; // intermediate witness
-	signal w8; // intermediate witness
-	
-	signal output w9; // output is public
-	
-	// mult gate 1
-	signal mul1left <-- 3*w6; // <-- means input wire
-	signal mul1right <-- 4*(3*w3 + 2*w4); // <-- means input wire
-	w8 <== mul1left*mul1right;  // <== means contraint
-	
-	// mult gate 3
-	signal mul3left <-- 8*(w2 + 5);
-	signal mul3right <-- 7*w5;
-	w7 <== mul3left*mul2right;
-
-	// mult gate 2
-	signal mul2left <-- 2*w8;
-	signal mul2right <-- w7 + 2;
-	w9 <== mul2left * mul2right;
-}
-
-component main { public [ w2 ] } = Example();
-```
-<!-- .element: style="font-size: 0.23em; width: 25vw" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-<div class="mermaid">
-graph BT
-	WTN0((w1 = 1))
-	WTN1((w4))
-	WTN2((w6))
-	WTN3((w3))
-	WTN4((w8))
-	WTN5((w2))
-	WTN6((w5))
-	WTN7((w9))
-	WTN8((w7))
-	ADD1[+]
-	ADD2[+]
-	ADD3[+]
-	MUL1["x (M1)"]
-	MUL2["x (M2)"]
-	MUL3["x (M3)"]
-	subgraph Multiplication Gate
-		direction BT
-		
-		WTN2 -.x 3.-> MUL1
-		ADD1 -.x 4.-> MUL1
-	    MUL1 === WTN4
-		
-		WTN3 -.x 3.-> ADD1
-		WTN1 -.x 2.-> ADD1
-		
-	    ADD3 -.x 1.-> MUL2
-	    WTN4 -.x 2.-> MUL2
-	    MUL2 === WTN7
-		
-		WTN5 -.x 1.-> ADD2
-		WTN0 -.x 5.-> ADD2
-		
-		WTN0 -.x 2.-> ADD3
-		WTN8 -.x 1.-> ADD3
-		
-		ADD2 -.x 8.-> MUL3
-		WTN6-. x 7 .-> MUL3
-	    MUL3 === WTN8
-	end
-	
-	classDef add stroke:#00ff00
-	classDef mul stroke:#ff0000
-	classDef wtn stroke:#0000ff
-	class WTN0,WTN1,WTN2,WTN3,WTN4,WTN5,WTN6,WTN7,WTN8,WTN9 wtn
-	class ADD1,ADD2,ADD3,ADD4 add
-	class MUL1,MUL2,MUL3 mul
-
-</div>
-
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Component
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-```
-pragma circom 2.1.6;
-
-template Mul1 () {
-	signal input in1;
-	signal input in2;
-	signal input in3;
-	signal output out;
-	out <== (3*in1) * 4*(3*in2 + 2*in3);
-}
-
-template Mul3 () {
-	signal input in1;
-	signal input in2;
-	signal output out;
-	out <== 8*(in1 + 5) * 7*(in2);
-}
-
-template Example () {
-
-	.
-	.
-	.
-
-
-
-
-
-
-
-
-
-}
-
-component main { public [ w2 ] } = Example();
-```
-<!-- .element: style="font-size: 0.23em; width: 25vw" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-```
-.
-.
-.
-
-template Example () {
-
-	// signal input w1;
-	signal input w2; //input witness
-	signal input w3;
-	signal input w4;
-	signal input w5;
-	signal input w6;
-	
-	signal output w9; // output is public
-	
-	// mult gate 1
-	component mul1 = Mul1();
-	mul1.in1 <-- w6;
-	mul1.in2 <-- w3;
-	mul1.in3 <-- w4;
-	
-	// mult gate 3
-	component mul3 = Mul3();
-	mul3.in1 <-- w2;
-	mul3.in2 <-- w5;
-
-	// mult gate 2
-	signal mul2left <-- 2*w8;
-	signal mul2right <-- w7 + 2;
-	w9 <== 2 * mul1.out * (mul3.out + 2);
-}
-.
-.
-.
-
-```
-<!-- .element: style="font-size: 0.23em; width: 25vw" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-<div class="mermaid">
-graph BT
-	WTN0((w1 = 1))
-	WTN1((w4))
-	WTN2((w6))
-	WTN3((w3))
-	WTN4((w8))
-	WTN5((w2))
-	WTN6((w5))
-	WTN7((w9))
-	WTN8((w7))
-	ADD1[+]
-	ADD2[+]
-	ADD3[+]
-	MUL1["x (M1)"]
-	MUL2["x (M2)"]
-	MUL3["x (M3)"]
-	subgraph Multiplication Gate
-		direction BT
-		subgraph Mul1
-			
-			WTN2 -.x 3.-> MUL1
-			ADD1 -.x 4.-> MUL1
-		    MUL1 === WTN4
-			
-			WTN3 -.x 3.-> ADD1
-			WTN1 -.x 2.-> ADD1
-		end
-		
-	    ADD3 -.x 1.-> MUL2
-	    WTN4 -.x 2.-> MUL2
-	    MUL2 === WTN7
-		subgraph Mul3
-			
-			WTN5 -.x 1.-> ADD2
-			WTN0 -.x 5.-> ADD2
-		end
-		
-		WTN0 -.x 2.-> ADD3
-		WTN8 -.x 1.-> ADD3
-		subgraph Mul3
-			
-			ADD2 -.x 8.-> MUL3
-			WTN6-. x 7 .-> MUL3
-		    MUL3 === WTN8
-		end
-	end
-	
-	classDef add stroke:#00ff00
-	classDef mul stroke:#ff0000
-	classDef wtn stroke:#0000ff
-	class WTN0,WTN1,WTN2,WTN3,WTN4,WTN5,WTN6,WTN7,WTN8,WTN9 wtn
-	class ADD1,ADD2,ADD3,ADD4 add
-	class MUL1,MUL2,MUL3 mul
-
-</div>
-
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
 </div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -1512,25 +3683,15 @@ hr {
 
 <div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-<div class="block">
-
-Zero Knowledge Applicatioins
-</div>
-
-
 <!-- .element: class="title" -->
 </div>
 
 
+There exist more arithmetization methodologies
 
+such as
+Plonkish or GKR
 
-`$C(x, w) \in \mathcal{R}$`
-
-```
-function prove(circuit, public, witness) -> Proof;
-
-function verify(circuit, public, proof) -> boolean;
-```
 
 <div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
@@ -1595,7 +3756,7 @@ function verify(circuit, public, proof) -> boolean;
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -1637,7 +3798,7 @@ hr {
 
 <div class="block">
 
-Merkle Tree
+Mental Model of the Programmable zk-SNARK
 </div>
 
 
@@ -1648,37 +3809,16 @@ Merkle Tree
 
 
 
-<div class="mermaid">
-graph BT
-	LEAF0
-	LEAF1
-	LEAF2
-	LEAF3
-	LEAF4
-	LEAF5
-	LEAF6
-	LEAF7
-	LEAF0-->NODE0["hash(LEAF0|LEAF1)"]
-	LEAF1-->NODE0
-	LEAF2-->NODE1["hash(LEAF2|LEAF3)"]
-	LEAF3-->NODE1
-	LEAF4-->NODE2["hash(LEAF4|LEAF5)"]
-	LEAF5-->NODE2
-	LEAF6-->NODE3["hash(LEAF6|LEAF7)"]
-	LEAF7-->NODE3
-	NODE0-->NODE4["hash(L|R)"]
-	NODE1-->NODE4
-	NODE2-->NODE5["hash(L|R)"]
-	NODE3-->NODE5
-	NODE4-->ROOT
-	NODE5-->ROOT
+<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
+<div class="block">
+
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Design an arithmetic circuit `$\mathcal{C}$` such that `$\mathcal{C}(x, w) = 1$`
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Define the relation `$\mathcal{R}$` between `$(C, x, w) \in \mathcal{R}$` you would love to prove there (R1CS+QAP or Plonkish etc)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Centrifugate your witness from the relation
+1. &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Query the proof without exposing the witness (Groth16 or PolyIOPs)
 </div>
 
-<!-- .element: style="width: 50vw" -->
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
 
 </div>
@@ -1741,7 +3881,7 @@ graph BT
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
 </div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -1781,52 +3921,12 @@ hr {
 
 <div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-<div class="block">
-
-Merkle Proof
-</div>
-
-
 <!-- .element: class="title" -->
 </div>
 
 
 
-
-
-<div class="mermaid">
-graph BT
-	LEAF0
-	LEAF1
-	LEAF2
-	LEAF3
-	LEAF4
-	LEAF5
-	LEAF6
-	LEAF7
-	LEAF0-->NODE0["hash(LEAF0|LEAF1)"]
-	LEAF1-->NODE0
-	LEAF2-->NODE1["hash(LEAF2|LEAF3)"]
-	LEAF3-->NODE1
-	LEAF4-->NODE2["hash(LEAF4|LEAF5)"]
-	LEAF5-->NODE2
-	LEAF6-->NODE3["hash(LEAF6|LEAF7)"]
-	LEAF7-->NODE3
-	NODE0-->NODE4["hash(L|R)"]
-	NODE1-->NODE4
-	NODE2-->NODE5["hash(L|R)"]
-	NODE3-->NODE5
-	NODE4-->ROOT
-	NODE5-->ROOT
-	classDef merkleProof stroke:#0000ff
-	classDef siblings stroke:#00ff00
-	class LEAF3,ROOT merkleProof
-	class LEAF2,NODE0,NODE5 siblings
-
-</div>
-
-<!-- .element: style="width: 50vw" -->
-
+QnA
 <div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
 
@@ -1890,1141 +3990,9 @@ graph BT
 </div>
 <div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
+EthVan ZK Workshop <!-- .element: style="font-size: 0.3em" -->
 </div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Zero Knowledge Membership Proof
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-```
-template PathFinder {
-	signal input path;
-	signal input level;
-	signal input sibling;
-	signal input node;
-	
-	signal output left;
-	signal output right;
-	.
-	.
-	.
-}
-
-template Hash() {
-	signal input left;
-	signal input right;
-	
-	signal output out;
-	.
-	.
-	.
-}
-
-template MerkleProof () {
-	.
-	.
-	.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-<!-- .element: style="font-size: 0.20em; width: 15vw" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-```c++
-
-template MerkleProof () {
-	signal input path;
-	signal input leaf;
-	signal input sibling0;
-	signal input sibling1;
-	signal input sibling2;
-	signal output root;
-	
-	component pf1 = PathFinder();
-	component node1 = Hash();
-	pf1.path <-- path;
-	pf1.level <-- 1;
-	pf1.sibling <-- sibling0;
-	pf1.node <-- leaf;
-	node1.left <-- pf1.left;
-	node1.right <-- pf1.right;
-
-	component pf2 = PathFinder();
-	component node2 = Hash();
-	pf2.path <-- path;
-	pf1.level <-- 2;
-	pf2.sibling <-- sibling1;
-	pf2.node <-- node1.out;
-	node2.left <-- pf2.left;
-	node2.right <-- pf2.right;
-	
-	component pf3 = PathFinder();
-	component node3 = Hash();
-	pf3.path <-- path;
-	pf1.level <-- 3;
-	pf3.sibling <-- sibling2;
-	pf3.node <-- node2.out;
-	node3.left <-- pf3.left;
-	node3.right <-- pf3.right;
-	
-	root <== node3.out;
-}
-
-component main { public [ root ] } = MerkleProof();
-```
-<!-- .element: style="font-size: 0.2em; width: 14vw" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-<div class="mermaid">
-graph BT
-	LEAF0
-	LEAF1
-	LEAF2[SIBLING0]
-	LEAF3
-	LEAF4
-	LEAF5
-	LEAF6
-	LEAF7
-	LEAF0-->NODE0["SIBLING1"]
-	LEAF1-->NODE0
-	LEAF2-->NODE1["hash(LEAF2|LEAF3)"]
-	LEAF3-->NODE1
-	LEAF4-->NODE2["hash(LEAF4|LEAF5)"]
-	LEAF5-->NODE2
-	LEAF6-->NODE3["hash(LEAF6|LEAF7)"]
-	LEAF7-->NODE3
-	NODE0-->NODE4["hash(L|R)"]
-	NODE1-->NODE4
-	NODE2-->NODE5["SIBLING2"]
-	NODE3-->NODE5
-	NODE4-->ROOT
-	NODE5-->ROOT
-	classDef merkleProof stroke:#0000ff
-	classDef siblings stroke:#00ff00
-	class LEAF3,ROOT merkleProof
-	class LEAF2,NODE0,NODE5 siblings
-
-</div>
-
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Possible Applications
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-public(`$x$`): ethereum tx hashes
-
-private(`$w$`):
-- pre image of tx hashes
-- signatures for those tx
-
-relation(`$\mathcal{R}$`): 
-- `recover(tx.signature) == tx.signer`<!-- .element: style="font-size: 0.7em" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Possible Applications
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-public(`$x$`):
-- state0
-- state1
-- state transition params
-
-private(`$w$`):
-- intermediate state
-
-relation(`$\mathcal{R}$`): 
-- `stf(input, state0) == state1`<!-- .element: style="font-size: 0.7em" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Possible Applications
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-public(`$x$`):
-- state0
-- stateN
-- N state transition params
-
-private(`$w$`):
-- N zkps
-
-relation(`$\mathcal{R}$`): 
-- `verify(input, state(i-1), state(i), pi)`<!-- .element: style="font-size: 0.7em" -->
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Possible Applications
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-public(`$x$`):
-- Membership Group
-- Poll ID
-
-private(`$w$`):
-- Your Identity
-- Your signature
-- Choice
-
-relation(`$\mathcal{R}$`): 
-- `membership.includes(yourIdentity)`
-</div>
-
-<!-- .element: style="font-size: 0.7em" -->
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-<div class="block">
-
-Libraries:
-
-- https://github.com/iden3/circomlib
-
-Language Syntax:
-- https://docs.circom.io/circom-language/signals/
-</div>
-
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<div class="block">
-
-Mid-term Assignment
-</div>
-
-
-<!-- .element: class="title" -->
-</div>
-
-
-
-
-1. Write a circuit that you know `$a, b, c$` such that `$a^{b} = c$` without revealing `$b$`.
-2. (option) Express the circuit in an R1CS graph
-
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style>
-h1,h2,h3,h4,h5,h6 { 
-    text-transform: none !important; 
-} 
-strong { 
-    padding-left: 1rem; 
-    padding-right: 1rem; 
-    background-color: #836953; 
-} 
-hr { 
-    width: 100%; 
-    border: 1px solid white; 
-} 
-.left {
-	text-align: left;
-}
-.small {
-	font-size: 0.7em;
-}
-.title h1, .title h2, .title h3, .title h4, .title h5, .title h6, .title p{ 
-    width: 100%; 
-    position: absolute; 
-    left: 0;
-    top: 0; 
-    background-color: #836953; 
-    padding: 0.2em;
-}
-.footer {
-    width: 100%; 
-    font-size: 0.4em;
-}
-</style>
-
-<div class="title" style="position: absolute; left: 0%; top: 0%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-<!-- .element: class="title" -->
-</div>
-
-
-Q&A
-
-
-<div class="" style="position: absolute; left: 5%; top: 10%; height: 80%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 30%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 40%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 50%; top: 10%; height: 80%; width: 50%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 60%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 60%; top: 10%; height: 80%; width: 40%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 70%; top: 10%; height: 80%; width: 30%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 10%; height: 80%; width: 80%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 80%; top: 10%; height: 80%; width: 20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
-
-
-</div>
-<div class="" style="position: absolute; left: 0%; top: 90%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-
-<!-- .element: class="footer" -->
-</div>
-<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
-
-ETHKL ZK Workshop <!-- .element: style="font-size: 0.3em" -->
-</div>
-</div></script></section></div>
+</div></script></section></section></div>
     </div>
 
     <script src="dist/reveal.js"></script>
